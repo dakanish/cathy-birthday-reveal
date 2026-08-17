@@ -8,18 +8,31 @@ function switchScreen(screenId) {
     target.classList.add('active');
 }
 
-function checkStage1() {
-    const inputs = document.querySelectorAll('.p1-q');
-    let answersCorrect = true;
-    inputs.forEach(input => {
-        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
-            answersCorrect = false;
+function validateRows(containerSelector) {
+    const rows = document.querySelectorAll(containerSelector);
+    let allValid = true;
+
+    rows.forEach(row => {
+        const expectedWord = row.getAttribute('data-answer').toUpperCase();
+        const inputs = row.querySelectorAll('.letter-box');
+        let typedWord = "";
+        inputs.forEach(input => {
+            typedWord += (input.value || "").toUpperCase();
+        });
+
+        if (typedWord !== expectedWord) {
+            allValid = false;
         }
     });
 
-    const secretWord = document.getElementById('p1-word-input').value.trim().toUpperCase();
+    return allValid;
+}
 
-    if (answersCorrect && secretWord === 'HOLIDAY') {
+function checkStage1() {
+    const rowsValid = validateRows('#screen-puzzle-1 .word-row');
+    const secret = document.getElementById('stage1-secret').value.trim().toUpperCase();
+
+    if (rowsValid && secret === 'HOLIDAY') {
         document.getElementById('p1-error').classList.add('hidden');
         switchScreen('screen-puzzle-2');
     } else {
@@ -28,17 +41,10 @@ function checkStage1() {
 }
 
 function checkStage2() {
-    const inputs = document.querySelectorAll('.p2-q');
-    let answersCorrect = true;
-    inputs.forEach(input => {
-        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
-            answersCorrect = false;
-        }
-    });
+    const rowsValid = validateRows('#screen-puzzle-2 .word-row');
+    const secret = document.getElementById('stage2-secret').value.trim().toUpperCase();
 
-    const secretWord = document.getElementById('p2-word-input').value.trim().toUpperCase();
-
-    if (answersCorrect && secretWord === 'EGYPT') {
+    if (rowsValid && secret === 'EGYPT') {
         document.getElementById('p2-error').classList.add('hidden');
         switchScreen('screen-puzzle-3');
     } else {
@@ -47,17 +53,10 @@ function checkStage2() {
 }
 
 function checkStage3() {
-    const inputs = document.querySelectorAll('.p3-q');
-    let answersCorrect = true;
-    inputs.forEach(input => {
-        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
-            answersCorrect = false;
-        }
-    });
+    const rowsValid = validateRows('#screen-puzzle-3 .word-row');
+    const secret = document.getElementById('stage3-secret').value.trim().toUpperCase();
 
-    const secretWord = document.getElementById('p3-word-input').value.trim().toUpperCase();
-
-    if (answersCorrect && secretWord === 'JANUARY') {
+    if (rowsValid && secret === 'JANUARY') {
         document.getElementById('p3-error').classList.add('hidden');
         switchScreen('screen-dragdrop');
     } else {
