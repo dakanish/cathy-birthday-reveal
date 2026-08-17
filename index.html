@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday Cathy!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- SCREEN 1: LANDING PAGE -->
+        <div id="screen-landing" class="screen active">
+            <h1 class="flash-title">HAPPY BIRTHDAY CATHY</h1>
+            <button class="red-btn" onclick="switchScreen('screen-crossword')">Enter</button>
+        </div>
+
+        <!-- SCREEN 2: THE CROSSWORD PUZZLE -->
+        <div id="screen-crossword" class="screen hidden">
+            <h2>The Birthday Crossword</h2>
+            <p class="instruction">Solve the clues and fill in the grid!</p>
+            
+            <div class="clues-container">
+                <div class="clue"><strong>1. Across:</strong> What are we escaping the British winter for? (7 letters)</div>
+                <div class="clue"><strong>2. Down:</strong> The ancient land we are visiting (5 letters)</div>
+                <div class="clue"><strong>3. Vertical:</strong> Which month does it start? (7 letters)</div>
+            </div>
+
+            <div class="crossword-grid">
+                <!-- Word 1: HOLIDAY (Across) -->
+                <input type="text" maxlength="1" class="cw-cell" data-ans="h">
+                <input type="text" maxlength="1" class="cw-cell" data-ans="o">
+                <input type="text" maxlength="1" class="cw-cell" data-ans="l">
+                <input type="text" maxlength="1" class="cw-cell yellow-cell" data-ans="i">
+                <input type="text" maxlength="1" class="cw-cell" data-ans="d">
+                <input type="text" maxlength="1" class="cw-cell" data-ans="a">
+                <input type="text" maxlength="1" class="cw-cell" data-ans="y">
+            </div>
+
+            <button class="red-btn" onclick="checkCrossword()">Continue</button>
+            <p id="cw-error" class="error hidden">Not quite right! Check your letters.</p>
+        </div>
+
+        <!-- SCREEN 3: DRAG AND DROP -->
+        <div id="screen-dragdrop" class="screen hidden">
+            <h2>Put the Pieces Together</h2>
+            <p class="sentence-box">
+                We're going on <span class="drop-zone" id="zone-1" ondragover="allowDrop(event)" ondrop="drop(event, 'Holiday', 'zone-1')">____</span> 
+                to <span class="drop-zone" id="zone-2" ondragover="allowDrop(event)" ondrop="drop(event, 'Egypt', 'zone-2')">_____</span> 
+                in <span class="drop-zone" id="zone-3" ondragover="allowDrop(event)" ondrop="drop(event, 'January', 'zone-3')">________</span>
+            </p>
+
+            <div class="drag-items">
+                <div draggable="true" ondragstart="drag(event)" id="item-egypt" class="draggable-pill">Egypt</div>
+                <div draggable="true" ondragstart="drag(event)" id="item-january" class="draggable-pill">January</div>
+                <div draggable="true" ondragstart="drag(event)" id="item-holiday" class="draggable-pill">Holiday</div>
+            </div>
+            <p id="drop-error" class="error hidden">Drag all the words into their correct spots!</p>
+        </div>
+
+        <!-- SCREEN 4: GRAND REVEAL -->
+        <div id="screen-reveal" class="screen hidden">
+            <h1 class="reveal-header">🎉 Congratulations!</h1>
+            <div class="reveal-card">
+                <p>You solved the puzzle. We're going on holiday in <strong>January</strong> to Hurghada, <strong>Egypt</strong>.</p>
+                <p>We'll be staying at the <strong>Caves Beach Resort</strong>. All inclusive. Week long of winter sun, relaxation and adventures!</p>
+                <p class="logistics">Flights are booked, transfer from the airport to the hotel is sorted, and transport to Bristol has also been arranged.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
