@@ -13,36 +13,112 @@
         <!-- SCREEN 1: LANDING PAGE -->
         <div id="screen-landing" class="screen active">
             <h1 class="flash-title">HAPPY BIRTHDAY CATHY</h1>
-            <button class="red-btn" onclick="switchScreen('screen-crossword')">Enter</button>
+            <button class="red-btn" onclick="switchScreen('screen-puzzle-1')">Enter</button>
         </div>
 
-        <!-- SCREEN 2: THE CROSSWORD PUZZLE -->
-        <div id="screen-crossword" class="screen hidden">
-            <h2>The Birthday Crossword</h2>
-            <p class="instruction">Solve the clues and fill in the grid!</p>
+        <!-- SCREEN 2: PUZZLE 1 (Spells: HOLIDAY via yellow boxes, then type HOLIDAY) -->
+        <div id="screen-puzzle-1" class="screen hidden">
+            <h2>Stage 1: General Knowledge</h2>
+            <p class="instruction">Solve the random clues below:</p>
             
             <div class="clues-container">
-                <div class="clue"><strong>1. Across:</strong> What are we escaping the British winter for? (7 letters)</div>
-                <div class="clue"><strong>2. Down:</strong> The ancient land we are visiting (5 letters)</div>
-                <div class="clue"><strong>3. Vertical:</strong> Which month does it start? (7 letters)</div>
+                <div class="clue"><strong>1.</strong> Capital of Spain? (6) — <span class="yellow-hint">Yellow letter: H</span></div>
+                <div class="clue"><strong>2.</strong> Fluffy animal that hops? (6) — <span class="yellow-hint">Yellow letter: O</span></div>
+                <div class="clue"><strong>3.</strong> Color of a ruby? (3) — <span class="yellow-hint">Yellow letter: L</span></div>
+                <div class="clue"><strong>4.</strong> Frozen water? (3) — <span class="yellow-hint">Yellow letter: I</span></div>
+                <div class="clue"><strong>5.</strong> Man's best friend? (3) — <span class="yellow-hint">Yellow letter: D</span></div>
+                <div class="clue"><strong>6.</strong> Yellow citrus fruit? (5) — <span class="yellow-hint">Yellow letter: A</span></div>
+                <div class="clue"><strong>7.</strong> Sky color on a clear day? (4) — <span class="yellow-hint">Yellow letter: Y</span></div>
             </div>
 
-            <div class="crossword-grid">
-                <!-- Word 1: HOLIDAY (Across) -->
-                <input type="text" maxlength="1" class="cw-cell" data-ans="h">
-                <input type="text" maxlength="1" class="cw-cell" data-ans="o">
-                <input type="text" maxlength="1" class="cw-cell" data-ans="l">
-                <input type="text" maxlength="1" class="cw-cell yellow-cell" data-ans="i">
-                <input type="text" maxlength="1" class="cw-cell" data-ans="d">
-                <input type="text" maxlength="1" class="cw-cell" data-ans="a">
-                <input type="text" maxlength="1" class="cw-cell" data-ans="y">
+            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="6" class="p1-q" data-ans="MADRID"></div>
+            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="6" class="p1-q" data-ans="RABBIT"></div>
+            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="3" class="p1-q" data-ans="RED"></div>
+            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="3" class="p1-q" data-ans="ICE"></div>
+            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="3" class="p1-q" data-ans="DOG"></div>
+            <div class="puzzle-row"><span>6:</span> <input type="text" maxlength="5" class="p1-q" data-ans="LEMON"></div>
+            <div class="puzzle-row"><span>7:</span> <input type="text" maxlength="4" class="p1-q" data-ans="BLUE"></div>
+
+            <!-- The visual yellow-highlight row she has to spell out / verify -->
+            <div class="secret-word-box">
+                <p class="word-prompt">What secret word do the yellow letters spell?</p>
+                <div class="letter-boxes">
+                    <div class="box yellow">H</div><div class="box yellow">O</div><div class="box yellow">L</div><div class="box yellow">I</div><div class="box yellow">D</div><div class="box yellow">A</div><div class="box yellow">Y</div>
+                </div>
+                <input type="text" id="p1-word-input" placeholder="Enter secret word..." class="secret-input">
             </div>
 
-            <button class="red-btn" onclick="checkCrossword()">Continue</button>
-            <p id="cw-error" class="error hidden">Not quite right! Check your letters.</p>
+            <button class="red-btn" onclick="checkStage1()">Continue</button>
+            <p id="p1-error" class="error hidden">Check your answers or secret word!</p>
         </div>
 
-        <!-- SCREEN 3: DRAG AND DROP -->
+        <!-- SCREEN 3: PUZZLE 2 (Spells: EGYPT, then type EGYPT) -->
+        <div id="screen-puzzle-2" class="screen hidden">
+            <h2>Stage 2: General Knowledge</h2>
+            <p class="instruction">Keep going! Solve these clues:</p>
+            
+            <div class="clues-container">
+                <div class="clue"><strong>1.</strong> Energy or power source? (6) — <span class="yellow-hint">Yellow letter: E</span></div>
+                <div class="clue"><strong>2.</strong> Green garden vegetable? (4) — <span class="yellow-hint">Yellow letter: G</span></div>
+                <div class="clue"><strong>3.</strong> Morning moisture on grass? (3) — <span class="yellow-hint">Yellow letter: Y</span></div>
+                <div class="clue"><strong>4.</strong> Planet known as the Red Planet? (4) — <span class="yellow-hint">Yellow letter: P</span></div>
+                <div class="clue"><strong>5.</strong> Opposite of false? (4) — <span class="yellow-hint">Yellow letter: T</span></div>
+            </div>
+
+            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="6" class="p2-q" data-ans="ENERGY"></div>
+            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="4" class="p2-q" data-ans="PEAS"></div>
+            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="3" class="p2-q" data-ans="DEW"></div>
+            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="4" class="p2-q" data-ans="MARS"></div>
+            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="4" class="p2-q" data-ans="TRUE"></div>
+
+            <div class="secret-word-box">
+                <p class="word-prompt">What secret word do the yellow letters spell?</p>
+                <div class="letter-boxes">
+                    <div class="box yellow">E</div><div class="box yellow">G</div><div class="box yellow">Y</div><div class="box yellow">P</div><div class="box yellow">T</div>
+                </div>
+                <input type="text" id="p2-word-input" placeholder="Enter secret word..." class="secret-input">
+            </div>
+
+            <button class="red-btn" onclick="checkStage2()">Continue</button>
+            <p id="p2-error" class="error hidden">Check your answers or secret word!</p>
+        </div>
+
+        <!-- SCREEN 4: PUZZLE 3 (Spells: JANUARY, then type JANUARY) -->
+        <div id="screen-puzzle-3" class="screen hidden">
+            <h2>Stage 3: General Knowledge</h2>
+            <p class="instruction">Final set of clues:</p>
+            
+            <div class="clues-container">
+                <div class="clue"><strong>1.</strong> Largest planet in our solar system? (7) — <span class="yellow-hint">Yellow letter: J</span></div>
+                <div class="clue"><strong>2.</strong> Affirmative word? (3) — <span class="yellow-hint">Yellow letter: A</span></div>
+                <div class="clue"><strong>3.</strong> Sound made by a lion? (4) — <span class="yellow-hint">Yellow letter: N</span></div>
+                <div class="clue"><strong>4.</strong> Unit of distance (4) — <span class="yellow-hint">Yellow letter: U</span></div>
+                <div class="clue"><strong>5.</strong> Twinkling night sky object? (4) — <span class="yellow-hint">Yellow letter: A</span></div>
+                <div class="clue"><strong>6.</strong> Ocean predator with fins? (5) — <span class="yellow-hint">Yellow letter: R</span></div>
+                <div class="clue"><strong>7.</strong> Young sheep? (4) — <span class="yellow-hint">Yellow letter: Y</span></div>
+            </div>
+
+            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="7" class="p3-q" data-ans="JUPITER"></div>
+            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="3" class="p3-q" data-ans="YES"></div>
+            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="4" class="p3-q" data-ans="ROAR"></div>
+            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="4" class="p3-q" data-ans="MILE"></div>
+            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="4" class="p3-q" data-ans="STAR"></div>
+            <div class="puzzle-row"><span>6:</span> <input type="text" maxlength="5" class="p3-q" data-ans="SHARK"></div>
+            <div class="puzzle-row"><span>7:</span> <input type="text" maxlength="4" class="p3-q" data-ans="LAMB"></div>
+
+            <div class="secret-word-box">
+                <p class="word-prompt">What secret word do the yellow letters spell?</p>
+                <div class="letter-boxes">
+                    <div class="box yellow">J</div><div class="box yellow">A</div><div class="box yellow">N</div><div class="box yellow">U</div><div class="box yellow">A</div><div class="box yellow">R</div><div class="box yellow">Y</div>
+                </div>
+                <input type="text" id="p3-word-input" placeholder="Enter secret word..." class="secret-input">
+            </div>
+
+            <button class="red-btn" onclick="checkStage3()">Continue</button>
+            <p id="p3-error" class="error hidden">Check your answers or secret word!</p>
+        </div>
+
+        <!-- SCREEN 5: DRAG AND DROP -->
         <div id="screen-dragdrop" class="screen hidden">
             <h2>Put the Pieces Together</h2>
             <p class="sentence-box">
@@ -56,10 +132,9 @@
                 <div draggable="true" ondragstart="drag(event)" id="item-january" class="draggable-pill">January</div>
                 <div draggable="true" ondragstart="drag(event)" id="item-holiday" class="draggable-pill">Holiday</div>
             </div>
-            <p id="drop-error" class="error hidden">Drag all the words into their correct spots!</p>
         </div>
 
-        <!-- SCREEN 4: GRAND REVEAL -->
+        <!-- SCREEN 6: GRAND REVEAL -->
         <div id="screen-reveal" class="screen hidden">
             <h1 class="reveal-header">🎉 Congratulations!</h1>
             <div class="reveal-card">
