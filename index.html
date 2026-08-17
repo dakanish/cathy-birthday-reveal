@@ -16,106 +16,205 @@
             <button class="red-btn" onclick="switchScreen('screen-puzzle-1')">Enter</button>
         </div>
 
-        <!-- SCREEN 2: PUZZLE 1 (Spells: HOLIDAY via yellow boxes, then type HOLIDAY) -->
+        <!-- SCREEN 2: STAGE 1 (Spells H-O-L-I-D-A-Y in scattered yellow boxes) -->
         <div id="screen-puzzle-1" class="screen hidden">
-            <h2>Stage 1: General Knowledge</h2>
-            <p class="instruction">Solve the random clues below:</p>
+            <h2>Stage 1: Puzzle Grid</h2>
+            <p class="instruction">Solve the clues. Watch the yellow boxes!</p>
             
             <div class="clues-container">
-                <div class="clue"><strong>1.</strong> Capital of Spain? (6) — <span class="yellow-hint">Yellow letter: H</span></div>
-                <div class="clue"><strong>2.</strong> Fluffy animal that hops? (6) — <span class="yellow-hint">Yellow letter: O</span></div>
-                <div class="clue"><strong>3.</strong> Color of a ruby? (3) — <span class="yellow-hint">Yellow letter: L</span></div>
-                <div class="clue"><strong>4.</strong> Frozen water? (3) — <span class="yellow-hint">Yellow letter: I</span></div>
-                <div class="clue"><strong>5.</strong> Man's best friend? (3) — <span class="yellow-hint">Yellow letter: D</span></div>
-                <div class="clue"><strong>6.</strong> Yellow citrus fruit? (5) — <span class="yellow-hint">Yellow letter: A</span></div>
-                <div class="clue"><strong>7.</strong> Sky color on a clear day? (4) — <span class="yellow-hint">Yellow letter: Y</span></div>
+                <div class="clue"><strong>1.</strong> Device for calling people (5 letters)</div>
+                <div class="clue"><strong>2.</strong> Farm animal that gives milk (3 letters)</div>
+                <div class="clue"><strong>3.</strong> Creamy white drink you love (4 letters)</div>
+                <div class="clue"><strong>4.</strong> Feathered flying animal (4 letters)</div>
+                <div class="clue"><strong>5.</strong> Paved path for cars (4 letters)</div>
+                <div class="clue"><strong>6.</strong> Feline household pet (3 letters)</div>
+                <div class="clue"><strong>7.</strong> What's above us during the day (3 letters)</div>
             </div>
 
-            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="6" class="p1-q" data-ans="MADRID"></div>
-            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="6" class="p1-q" data-ans="RABBIT"></div>
-            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="3" class="p1-q" data-ans="RED"></div>
-            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="3" class="p1-q" data-ans="ICE"></div>
-            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="3" class="p1-q" data-ans="DOG"></div>
-            <div class="puzzle-row"><span>6:</span> <input type="text" maxlength="5" class="p1-q" data-ans="LEMON"></div>
-            <div class="puzzle-row"><span>7:</span> <input type="text" maxlength="4" class="p1-q" data-ans="BLUE"></div>
+            <!-- Row 1: PHONE (Yellow at index 1: H) -->
+            <div class="word-row" data-answer="PHONE">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
 
-            <!-- The visual yellow-highlight row she has to spell out / verify -->
-            <div class="secret-word-box">
-                <p class="word-prompt">What secret word do the yellow letters spell?</p>
-                <div class="letter-boxes">
-                    <div class="box yellow">H</div><div class="box yellow">O</div><div class="box yellow">L</div><div class="box yellow">I</div><div class="box yellow">D</div><div class="box yellow">A</div><div class="box yellow">Y</div>
-                </div>
-                <input type="text" id="p1-word-input" placeholder="Enter secret word..." class="secret-input">
+            <!-- Row 2: COW (Yellow at index 1: O) -->
+            <div class="word-row" data-answer="COW">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 3: MILK (Yellow at index 2: L) -->
+            <div class="word-row" data-answer="MILK">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 4: BIRD (Yellow at index 1: I) -->
+            <div class="word-row" data-answer="BIRD">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 5: ROAD (Yellow at index 3: D) -->
+            <div class="word-row" data-answer="ROAD">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+            </div>
+
+            <!-- Row 6: CAT (Yellow at index 1: A) -->
+            <div class="word-row" data-answer="CAT">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 7: SKY (Yellow at index 2: Y) -->
+            <div class="word-row" data-answer="SKY">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+            </div>
+
+            <div class="secret-prompt-box">
+                <p>What secret word do the yellow boxes spell?</p>
+                <input type="text" id="stage1-secret" placeholder="Enter word..." class="secret-input">
             </div>
 
             <button class="red-btn" onclick="checkStage1()">Continue</button>
-            <p id="p1-error" class="error hidden">Check your answers or secret word!</p>
+            <p id="p1-error" class="error hidden">Check your grid answers or secret word!</p>
         </div>
 
-        <!-- SCREEN 3: PUZZLE 2 (Spells: EGYPT, then type EGYPT) -->
+        <!-- SCREEN 3: STAGE 2 (Spells E-G-Y-P-T) -->
         <div id="screen-puzzle-2" class="screen hidden">
-            <h2>Stage 2: General Knowledge</h2>
-            <p class="instruction">Keep going! Solve these clues:</p>
+            <h2>Stage 2: Puzzle Grid</h2>
+            <p class="instruction">Solve the next set of clues:</p>
             
             <div class="clues-container">
-                <div class="clue"><strong>1.</strong> Energy or power source? (6) — <span class="yellow-hint">Yellow letter: E</span></div>
-                <div class="clue"><strong>2.</strong> Green garden vegetable? (4) — <span class="yellow-hint">Yellow letter: G</span></div>
-                <div class="clue"><strong>3.</strong> Morning moisture on grass? (3) — <span class="yellow-hint">Yellow letter: Y</span></div>
-                <div class="clue"><strong>4.</strong> Planet known as the Red Planet? (4) — <span class="yellow-hint">Yellow letter: P</span></div>
-                <div class="clue"><strong>5.</strong> Opposite of false? (4) — <span class="yellow-hint">Yellow letter: T</span></div>
+                <div class="clue"><strong>1.</strong> Power or electricity (6 letters)</div>
+                <div class="clue"><strong>2.</strong> Small green vegetable (4 letters)</div>
+                <div class="clue"><strong>3.</strong> Morning moisture on grass (3 letters)</div>
+                <div class="clue"><strong>4.</strong> Planet known as the Red Planet (4 letters)</div>
+                <div class="clue"><strong>5.</strong> Opposite of false (4 letters)</div>
             </div>
 
-            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="6" class="p2-q" data-ans="ENERGY"></div>
-            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="4" class="p2-q" data-ans="PEAS"></div>
-            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="3" class="p2-q" data-ans="DEW"></div>
-            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="4" class="p2-q" data-ans="MARS"></div>
-            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="4" class="p2-q" data-ans="TRUE"></div>
+            <!-- Row 1: ENERGY (Yellow at index 0: E) -->
+            <div class="word-row" data-answer="ENERGY">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
 
-            <div class="secret-word-box">
-                <p class="word-prompt">What secret word do the yellow letters spell?</p>
-                <div class="letter-boxes">
-                    <div class="box yellow">E</div><div class="box yellow">G</div><div class="box yellow">Y</div><div class="box yellow">P</div><div class="box yellow">T</div>
-                </div>
-                <input type="text" id="p2-word-input" placeholder="Enter secret word..." class="secret-input">
+            <!-- Row 2: PEAS (Yellow at index 1: G) -->
+            <div class="word-row" data-answer="PEAS">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 3: DEW (Yellow at index 2: Y) -->
+            <div class="word-row" data-answer="DEW">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+            </div>
+
+            <!-- Row 4: MARS (Yellow at index 3: P) -->
+            <div class="word-row" data-answer="MARS">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+            </div>
+
+            <!-- Row 5: TRUE (Yellow at index 1: T) -->
+            <div class="word-row" data-answer="TRUE">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box">
+                <input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <div class="secret-prompt-box">
+                <p>What secret word do the yellow boxes spell?</p>
+                <input type="text" id="stage2-secret" placeholder="Enter word..." class="secret-input">
             </div>
 
             <button class="red-btn" onclick="checkStage2()">Continue</button>
-            <p id="p2-error" class="error hidden">Check your answers or secret word!</p>
+            <p id="p2-error" class="error hidden">Check your grid answers or secret word!</p>
         </div>
 
-        <!-- SCREEN 4: PUZZLE 3 (Spells: JANUARY, then type JANUARY) -->
+        <!-- SCREEN 4: STAGE 3 (Spells J-A-N-U-A-R-Y) -->
         <div id="screen-puzzle-3" class="screen hidden">
-            <h2>Stage 3: General Knowledge</h2>
+            <h2>Stage 3: Puzzle Grid</h2>
             <p class="instruction">Final set of clues:</p>
             
             <div class="clues-container">
-                <div class="clue"><strong>1.</strong> Largest planet in our solar system? (7) — <span class="yellow-hint">Yellow letter: J</span></div>
-                <div class="clue"><strong>2.</strong> Affirmative word? (3) — <span class="yellow-hint">Yellow letter: A</span></div>
-                <div class="clue"><strong>3.</strong> Sound made by a lion? (4) — <span class="yellow-hint">Yellow letter: N</span></div>
-                <div class="clue"><strong>4.</strong> Unit of distance (4) — <span class="yellow-hint">Yellow letter: U</span></div>
-                <div class="clue"><strong>5.</strong> Twinkling night sky object? (4) — <span class="yellow-hint">Yellow letter: A</span></div>
-                <div class="clue"><strong>6.</strong> Ocean predator with fins? (5) — <span class="yellow-hint">Yellow letter: R</span></div>
-                <div class="clue"><strong>7.</strong> Young sheep? (4) — <span class="yellow-hint">Yellow letter: Y</span></div>
+                <div class="clue"><strong>1.</strong> Largest planet in our solar system (7 letters)</div>
+                <div class="clue"><strong>2.</strong> Affirmative word (3 letters)</div>
+                <div class="clue"><strong>3.</strong> Sound made by a lion (4 letters)</div>
+                <div class="clue"><strong>4.</strong> Unit of distance (4 letters)</div>
+                <div class="clue"><strong>5.</strong> Twinkling night sky object (4 letters)</div>
+                <div class="clue"><strong>6.</strong> Ocean predator with fins (5 letters)</div>
+                <div class="clue"><strong>7.</strong> Baby sheep (4 letters)</div>
             </div>
 
-            <div class="puzzle-row"><span>1:</span> <input type="text" maxlength="7" class="p3-q" data-ans="JUPITER"></div>
-            <div class="puzzle-row"><span>2:</span> <input type="text" maxlength="3" class="p3-q" data-ans="YES"></div>
-            <div class="puzzle-row"><span>3:</span> <input type="text" maxlength="4" class="p3-q" data-ans="ROAR"></div>
-            <div class="puzzle-row"><span>4:</span> <input type="text" maxlength="4" class="p3-q" data-ans="MILE"></div>
-            <div class="puzzle-row"><span>5:</span> <input type="text" maxlength="4" class="p3-q" data-ans="STAR"></div>
-            <div class="puzzle-row"><span>6:</span> <input type="text" maxlength="5" class="p3-q" data-ans="SHARK"></div>
-            <div class="puzzle-row"><span>7:</span> <input type="text" maxlength="4" class="p3-q" data-ans="LAMB"></div>
+            <!-- Row 1: JUPITER (Yellow at index 0: J) -->
+            <div class="word-row" data-answer="JUPITER">
+                <input type="text" maxlength="1" class="letter-box yellow">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box">
+            </div>
 
-            <div class="secret-word-box">
-                <p class="word-prompt">What secret word do the yellow letters spell?</p>
-                <div class="letter-boxes">
-                    <div class="box yellow">J</div><div class="box yellow">A</div><div class="box yellow">N</div><div class="box yellow">U</div><div class="box yellow">A</div><div class="box yellow">R</div><div class="box yellow">Y</div>
-                </div>
-                <input type="text" id="p3-word-input" placeholder="Enter secret word..." class="secret-input">
+            <!-- Row 2: YES (Yellow at index 1: A) -->
+            <div class="word-row" data-answer="YES">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow"><input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 3: ROAR (Yellow at index 2: N) -->
+            <div class="word-row" data-answer="ROAR">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow"><input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 4: MILE (Yellow at index 1: U) -->
+            <div class="word-row" data-answer="MILE">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 5: STAR (Yellow at index 2: A) -->
+            <div class="word-row" data-answer="STAR">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow"><input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 6: SHARK (Yellow at index 3: R) -->
+            <div class="word-row" data-answer="SHARK">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow"><input type="text" maxlength="1" class="letter-box">
+            </div>
+
+            <!-- Row 7: LAMB (Yellow at index 3: Y) -->
+            <div class="word-row" data-answer="LAMB">
+                <input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box"><input type="text" maxlength="1" class="letter-box yellow">
+            </div>
+
+            <div class="secret-prompt-box">
+                <p>What secret word do the yellow boxes spell?</p>
+                <input type="text" id="stage3-secret" placeholder="Enter word..." class="secret-input">
             </div>
 
             <button class="red-btn" onclick="checkStage3()">Continue</button>
-            <p id="p3-error" class="error hidden">Check your answers or secret word!</p>
+            <p id="p3-error" class="error hidden">Check your grid answers or secret word!</p>
         </div>
 
         <!-- SCREEN 5: DRAG AND DROP -->
