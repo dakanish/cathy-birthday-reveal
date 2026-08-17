@@ -8,18 +8,60 @@ function switchScreen(screenId) {
     target.classList.add('active');
 }
 
-function checkCrossword() {
-    const cells = document.querySelectorAll('.cw-cell');
-    let userWord = "";
-    cells.forEach(cell => {
-        userWord += cell.value.toLowerCase();
+function checkStage1() {
+    const inputs = document.querySelectorAll('.p1-q');
+    let answersCorrect = true;
+    inputs.forEach(input => {
+        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
+            answersCorrect = false;
+        }
     });
 
-    if (userWord === "holiday") {
-        document.getElementById('cw-error').classList.add('hidden');
+    const secretWord = document.getElementById('p1-word-input').value.trim().toUpperCase();
+
+    if (answersCorrect && secretWord === 'HOLIDAY') {
+        document.getElementById('p1-error').classList.add('hidden');
+        switchScreen('screen-puzzle-2');
+    } else {
+        document.getElementById('p1-error').classList.remove('hidden');
+    }
+}
+
+function checkStage2() {
+    const inputs = document.querySelectorAll('.p2-q');
+    let answersCorrect = true;
+    inputs.forEach(input => {
+        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
+            answersCorrect = false;
+        }
+    });
+
+    const secretWord = document.getElementById('p2-word-input').value.trim().toUpperCase();
+
+    if (answersCorrect && secretWord === 'EGYPT') {
+        document.getElementById('p2-error').classList.add('hidden');
+        switchScreen('screen-puzzle-3');
+    } else {
+        document.getElementById('p2-error').classList.remove('hidden');
+    }
+}
+
+function checkStage3() {
+    const inputs = document.querySelectorAll('.p3-q');
+    let answersCorrect = true;
+    inputs.forEach(input => {
+        if (input.value.trim().toUpperCase() !== input.getAttribute('data-ans')) {
+            answersCorrect = false;
+        }
+    });
+
+    const secretWord = document.getElementById('p3-word-input').value.trim().toUpperCase();
+
+    if (answersCorrect && secretWord === 'JANUARY') {
+        document.getElementById('p3-error').classList.add('hidden');
         switchScreen('screen-dragdrop');
     } else {
-        document.getElementById('cw-error').classList.remove('hidden');
+        document.getElementById('p3-error').classList.remove('hidden');
     }
 }
 
